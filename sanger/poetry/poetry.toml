@@ -1,0 +1,5 @@
+cache-dir = "/lustre/scratch123/hgi/projects/crohns/mercury/hgi-vault-dev/python/poetry_cache"
+
+[virtualenvs]
+create = true
+in-project = true
