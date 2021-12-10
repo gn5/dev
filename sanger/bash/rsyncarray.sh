@@ -3,34 +3,20 @@
 # group of files and dirs must be crohns,
 # and prevent others from having rights on files or dirs:
 #
-# newgrp crohns
+# newgrp ibdx10
 # umask 007 # u=rwx,g=rwx,o=
 #
 # bsub: b rsyncarray.sh 2 10 long 
 
 set -ex
 
-s114="/lustre/scratch114/projects/crohns"
-s123="/lustre/scratch123/hgi/mdt1/projects/crohns"
+out_dir="/lustre/scratch118/humgen/hgi/projects/ibdx10/variant_calling/joint_calling/ibd_concat_nextflow_backups"
 
 declare -a arr=(
-		"/lustre/scratch114/projects/crohns/.TemporaryItems"
-		"/lustre/scratch114/projects/crohns/SC_check"
-		"/lustre/scratch114/projects/crohns/crohns-bridgebuilder"
-		"/lustre/scratch114/projects/crohns/S04380110_Regions.bed"
-		"/lustre/scratch114/projects/crohns/GWAS_imputation"
-		"/lustre/scratch114/projects/crohns/submit.sh"
-		"/lustre/scratch114/projects/crohns/uk10kdata_logs"
-		"/lustre/scratch114/projects/crohns/uk10k-bridgebuilder"
-		"/lustre/scratch114/projects/crohns/SCsamples.txt"
-		"/lustre/scratch114/projects/crohns/event_counts_1.txt"
-		"/lustre/scratch114/projects/crohns/RGfix"
-		"/lustre/scratch114/projects/crohns/vvi"
-		"/lustre/scratch114/projects/crohns/CNinfo.txt"
-		"/lustre/scratch114/projects/crohns/fileloc.txt"
-		"/lustre/scratch114/projects/crohns/psoriasis"
-		"/lustre/scratch114/projects/crohns/._.TemporaryItems"
-		"/lustre/scratch114/projects/crohns/master.list"
+                "/lustre/scratch118/humgen/hgi/projects/ibdx10/variant_calling/joint_calling/ibd_concat_nextflow"
+                "/lustre/scratch118/humgen/hgi/projects/ibdx10/variant_calling/joint_calling/ibd_concat_nextflow2"
+                "/lustre/scratch118/humgen/hgi/projects/ibdx10/variant_calling/joint_calling/ibd_concat_nextflow3"
+                "/lustre/scratch118/humgen/hgi/projects/ibdx10/variant_calling/joint_calling/ibd_concat_nextflow3_big"
                 )
 
 rsync_ () {
@@ -47,8 +33,8 @@ for i in "${arr[@]}"
 do
     rsync_ \
 	"$i" \
-	"${s123}/mercury/backup114/" \
-	"${s123}/mercury/backup114/backup.log"
+	"${out_dir}/" \
+	"${out_dir}/backup.log"
 done
 
 echo rsync done
